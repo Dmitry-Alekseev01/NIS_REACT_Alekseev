@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  min-height: 100vh;
+  color: #fff;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.pet-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  width: 100%;
+  padding: 16px 0;
+}
+
+.MuiContainer-root {
+  padding-left: 24px;
+  padding-right: 24px;
+  
+  @media (max-width: 600px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.MuiFormControl-root {
+  .MuiInputLabel-root {
+    color: rgba(255, 255, 255, 0.7) !important;
+    
+    &.Mui-focused {
+      color: #2196f3 !important;
+    }
+  }
+  
+  .MuiOutlinedInput-root {
+    color: white;
+    
+    .MuiOutlinedInput-notchedOutline {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    &:hover .MuiOutlinedInput-notchedOutline {
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: #2196f3;
+    }
+  }
+  
+  .MuiSelect-icon {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.MuiMenuItem-root {
+  color: #333;
+  
+  &:hover {
+    background-color: rgba(33, 150, 243, 0.1) !important;
+  }
+}
+
+.MuiSkeleton-root {
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 100%) !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.MuiIconButton-root {
+  transition: all 0.3s ease !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}

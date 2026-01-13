@@ -1,0 +1,6 @@
+{
+  "messages": {
+    "one": "You have {{count}} unread message ({{date}})",
+    "other": "You have {{count}} unread messages ({{date}})"
+  }
+}

@@ -1,0 +1,107 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.App-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 30px 20px;
+  color: white;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.App-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.5rem;
+}
+
+.App-header h2 {
+  margin: 0 0 20px 0;
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+.locale-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.locale-btn {
+  padding: 10px 25px;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.locale-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.locale-btn.active {
+  background: white;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.App-main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.result, .explanation {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.result h3, .explanation h3 {
+  color: #333;
+  margin-top: 0;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.plural-rules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.rule h4 {
+  color: #667eea;
+  margin-bottom: 10px;
+}
+
+.rule ul {
+  padding-left: 20px;
+}
+
+.rule li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .plural-rules {
+    grid-template-columns: 1fr;
+  }
+  
+  .App-header h1 {
+    font-size: 2rem;
+  }
+}

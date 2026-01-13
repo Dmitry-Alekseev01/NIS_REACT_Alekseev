@@ -1,0 +1,28 @@
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+
+import messagesRU from '../locales/ru/messages.json';
+import messagesEN from '../locales/en/messages.json';
+
+i18n
+  .use(initReactI18next)
+  .init({
+    resources: {
+      ru: {
+        translation: messagesRU
+      },
+      en: {
+        translation: messagesEN
+      }
+    },
+    lng: 'ru',
+    fallbackLng: 'ru',
+    interpolation: {
+      escapeValue: false
+    },
+    react: {
+      useSuspense: false
+    }
+  });
+
+export default i18n;

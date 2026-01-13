@@ -1,0 +1,37 @@
+.container {
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  max-width: 600px;
+}
+
+.notification {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #007bff;
+}
+
+.debugInfo {
+  font-size: 14px;
+  color: #666;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px dashed #ccc;
+}
+
+.debugInfo p {
+  margin: 5px 0;
+}
+
+.debugInfo strong {
+  color: #007bff;
+}

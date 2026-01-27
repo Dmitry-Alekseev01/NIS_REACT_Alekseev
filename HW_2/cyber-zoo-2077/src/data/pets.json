@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "Neo-Panther",
+    "species": "Cyber-Feline",
+    "mood": "happy",
+    "energy": 85,
+    "level": 3,
+    "avatar": "🐆"
+  },
+  {
+    "id": "2",
+    "name": "Data-Wolf",
+    "species": "Cyber-Canid",
+    "mood": "content",
+    "energy": 60,
+    "level": 2,
+    "avatar": "🐺"
+  },
+  {
+    "id": "3",
+    "name": "Glitch-Bird",
+    "species": "Cyber-Avian",
+    "mood": "excited",
+    "energy": 90,
+    "level": 4,
+    "avatar": "🐦"
+  },
+  {
+    "id": "4",
+    "name": "Byte-Bear",
+    "species": "Cyber-Ursid",
+    "mood": "sleepy",
+    "energy": 30,
+    "level": 1,
+    "avatar": "🐻"
+  }
+]

@@ -1,0 +1,92 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search...",
+    "noData": "No data available",
+    "all": "All",
+    "back": "Back",
+    "settingsSaved": "Settings saved successfully!"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "username": "Username",
+    "password": "Password",
+    "email": "Email",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "confirmPassword": "Confirm Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "loginError": "Invalid username or password"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "dashboard": {
+    "totalProducts": "Total Products",
+    "revenue": "Revenue",
+    "customers": "Customers",
+    "growth": "Growth",
+    "recentOrders": "Recent Orders",
+    "recentProducts": "Recent Products",
+    "orderChartPlaceholder": "Order chart placeholder"
+  },
+  "products": {
+    "title": "Products",
+    "manage": "Manage your products inventory",
+    "create": "Create Product",
+    "edit": "Edit Product",
+    "name": "Product Name",
+    "price": "Price",
+    "category": "Category",
+    "rating": "Rating",
+    "stock": "Stock",
+    "description": "Description",
+    "images": "Images",
+    "searchPlaceholder": "Search products...",
+    "noProducts": "No products found",
+    "details": "Product Details",
+    "sku": "SKU",
+    "units": "units"
+  },
+  "profile": {
+    "title": "Profile",
+    "personalInfo": "Personal Information",
+    "changePassword": "Change Password"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "pageSize": "Page Size",
+    "light": "Light",
+    "dark": "Dark",
+    "english": "English",
+    "russian": "Russian",
+    "pageSizeHint": "Number of products per page (5-100)"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for doesn't exist or has been moved.",
+    "homeButton": "Go to Homepage"
+  },
+  "errors": {
+    "required": "This field is required",
+    "email": "Invalid email address",
+    "minLength": "Minimum {{count}} characters required",
+    "network": "Network error. Please try again.",
+    "passwordMatch": "Passwords must match"
+  }
+}

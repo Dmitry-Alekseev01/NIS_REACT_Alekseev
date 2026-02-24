@@ -16,7 +16,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies, onToggleFavorite, viewMod
 
   return (
     <div className={`movie-list ${viewMode}`}>
-      {movies.map(movie => (
+      {movies.map((movie) => (
         <MovieCard
           key={movie.id}
           movie={movie}

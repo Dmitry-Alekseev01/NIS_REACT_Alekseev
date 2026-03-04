@@ -1,0 +1,92 @@
+{
+  "common": {
+    "loading": "Загрузка...",
+    "error": "Произошла ошибка",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "search": "Поиск...",
+    "noData": "Данные отсутствуют",
+    "all": "Все",
+    "back": "Назад",
+    "settingsSaved": "Настройки успешно сохранены!"
+  },
+  "auth": {
+    "login": "Войти",
+    "logout": "Выйти",
+    "register": "Регистрация",
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "email": "Email",
+    "firstName": "Имя",
+    "lastName": "Фамилия",
+    "confirmPassword": "Подтвердите пароль",
+    "rememberMe": "Запомнить меня",
+    "forgotPassword": "Забыли пароль?",
+    "noAccount": "Нет аккаунта?",
+    "hasAccount": "Уже есть аккаунт?",
+    "loginError": "Неверное имя пользователя или пароль"
+  },
+  "navigation": {
+    "dashboard": "Дашборд",
+    "products": "Товары",
+    "profile": "Профиль",
+    "settings": "Настройки"
+  },
+  "dashboard": {
+    "totalProducts": "Всего товаров",
+    "revenue": "Выручка",
+    "customers": "Клиенты",
+    "growth": "Рост",
+    "recentOrders": "Последние заказы",
+    "recentProducts": "Последние товары",
+    "orderChartPlaceholder": "График заказов"
+  },
+  "products": {
+    "title": "Товары",
+    "manage": "Управление каталогом товаров",
+    "create": "Создать товар",
+    "edit": "Редактировать товар",
+    "name": "Название",
+    "price": "Цена",
+    "category": "Категория",
+    "rating": "Рейтинг",
+    "stock": "Остаток",
+    "description": "Описание",
+    "images": "Изображения",
+    "searchPlaceholder": "Поиск товаров...",
+    "noProducts": "Товары не найдены",
+    "details": "Детали товара",
+    "sku": "Артикул",
+    "units": "шт."
+  },
+  "profile": {
+    "title": "Профиль",
+    "personalInfo": "Личная информация",
+    "changePassword": "Сменить пароль"
+  },
+  "settings": {
+    "title": "Настройки",
+    "language": "Язык",
+    "theme": "Тема",
+    "pageSize": "Размер страницы",
+    "light": "Светлая",
+    "dark": "Тёмная",
+    "english": "Английский",
+    "russian": "Русский",
+    "pageSizeHint": "Количество товаров на странице (5–100)"
+  },
+  "notFound": {
+    "title": "Страница не найдена",
+    "description": "Страница, которую вы ищете, не существует или была перемещена.",
+    "homeButton": "На главную"
+  },
+  "errors": {
+    "required": "Это поле обязательно",
+    "email": "Неверный формат email",
+    "minLength": "Минимум {{count}} символов",
+    "network": "Ошибка сети. Попробуйте ещё раз.",
+    "passwordMatch": "Пароли должны совпадать"
+  }
+}

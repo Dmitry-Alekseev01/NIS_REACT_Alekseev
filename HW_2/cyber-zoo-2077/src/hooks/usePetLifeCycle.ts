@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { Pet } from '../components/PetCard/types';
+import { Pet, PetMood } from '../components/PetCard/types';
 
 interface UsePetLifecycleProps {
   pet: Pet;
   onEnergyChange: (id: string, energy: number) => void;
-  onMoodChange: (id: string, mood: Pet['mood']) => void;
+  onMoodChange: (id: string, mood: PetMood) => void;
 }
 
 export const usePetLifecycle = ({
@@ -25,11 +25,11 @@ export const usePetLifecycle = ({
           prevEnergyRef.current = newEnergy;
         }
 
-        let newMood: Pet['mood'] = 'content';
-        if (newEnergy <= 20) newMood = 'sad';
-        else if (newEnergy <= 40) newMood = 'sleepy';
-        else if (newEnergy >= 80) newMood = 'excited';
-        else if (newEnergy >= 60) newMood = 'happy';
+        let newMood: PetMood = PetMood.CONTENT;
+        if (newEnergy <= 20) newMood = PetMood.SAD;
+        else if (newEnergy <= 40) newMood = PetMood.SLEEPY;
+        else if (newEnergy >= 80) newMood = PetMood.EXCITED;
+        else if (newEnergy >= 60) newMood = PetMood.HAPPY;
 
         if (newMood !== prevMoodRef.current) {
           onMoodChange(pet.id, newMood);

@@ -45,7 +45,7 @@ const ProfilePage: React.FC = () => {
 
   const onSubmit = (data: ProfileForm) => {
     console.log('Profile updated:', data);
-    alert(t('common.settingsSaved')); // используем перевод
+    alert(t('common.settingsSaved'));
   };
 
   const handleReset = () => {

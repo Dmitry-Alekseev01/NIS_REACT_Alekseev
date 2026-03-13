@@ -26,10 +26,7 @@ const Controls: React.FC<ControlsProps> = ({
   return (
     <div className="controls">
       <div className="filter-buttons">
-        <button
-          className={filter === 'all' ? 'active' : ''}
-          onClick={() => onFilterChange('all')}
-        >
+        <button className={filter === 'all' ? 'active' : ''} onClick={() => onFilterChange('all')}>
           Все
         </button>
         <button
@@ -39,7 +36,7 @@ const Controls: React.FC<ControlsProps> = ({
           Только избранные
         </button>
       </div>
-      
+
       <div className="search">
         <input
           ref={searchRef}
@@ -49,7 +46,7 @@ const Controls: React.FC<ControlsProps> = ({
           className="search-input"
         />
       </div>
-      
+
       <div className="view-buttons">
         <button
           className={viewMode === 'grid' ? 'active' : ''}
@@ -58,7 +55,7 @@ const Controls: React.FC<ControlsProps> = ({
           Плитка
         </button>
         <button
-          className={viewMode === 'list' ? 'active' : ''} 
+          className={viewMode === 'list' ? 'active' : ''}
           onClick={() => onViewModeChange('list')}
         >
           Список

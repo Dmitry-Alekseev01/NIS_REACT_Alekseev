@@ -221,7 +221,7 @@ export const Dashboard: React.FC = () => {
         </div>
       )}
 
-      <EventLog open={logOpen} onClose={() => setLogOpen(false)} />
+      <EventLog isOpen={logOpen} onClose={() => setLogOpen(false)} />
     </Container>
   );
 };

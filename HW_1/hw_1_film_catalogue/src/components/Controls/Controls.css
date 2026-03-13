@@ -10,12 +10,14 @@
   gap: 15px;
 }
 
-.filter-buttons, .view-buttons {
+.filter-buttons,
+.view-buttons {
   display: flex;
   gap: 10px;
 }
 
-.filter-buttons button, .view-buttons button {
+.filter-buttons button,
+.view-buttons button {
   padding: 8px 16px;
   border: 2px solid #007bff;
   background-color: white;
@@ -26,11 +28,13 @@
   font-weight: 500;
 }
 
-.filter-buttons button:hover, .view-buttons button:hover {
+.filter-buttons button:hover,
+.view-buttons button:hover {
   background-color: #e3f2fd;
 }
 
-.filter-buttons button.active, .view-buttons button.active {
+.filter-buttons button.active,
+.view-buttons button.active {
   background-color: #007bff;
   color: white;
 }
@@ -59,11 +63,12 @@
     flex-direction: column;
     align-items: stretch;
   }
-  
-  .filter-buttons, .view-buttons {
+
+  .filter-buttons,
+  .view-buttons {
     justify-content: center;
   }
-  
+
   .search {
     max-width: none;
   }

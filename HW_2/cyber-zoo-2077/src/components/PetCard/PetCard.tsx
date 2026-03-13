@@ -1,5 +1,5 @@
-import React, { useReducer, useCallback, useRef, useEffect } from 'react';
-import { Pet, PetAction } from './types';
+import React, { useReducer, useCallback, useRef, useEffect, useMemo } from 'react';
+import { Pet, PetMood, PetActionType, PetAction } from './types';
 import { useEventLog } from '../../hooks/useEventLog';
 import { usePetLifecycle } from '../../hooks/usePetLifeCycle';
 import { ActionButton } from './PetActions/ActionButton.styled';
@@ -11,7 +11,7 @@ const styles = {
     padding: '20px',
     margin: '10px',
     color: 'white',
-    position: 'relative' as 'relative',
+    position: 'relative' as 'relative', // TypeScript: явное указание типа для свойства position
     overflow: 'hidden',
     minHeight: '300px',
     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
@@ -50,7 +50,7 @@ const styles = {
     background: 'rgba(255, 255, 255, 0.15)',
     padding: '8px 12px',
     borderRadius: '8px',
-    textAlign: 'center' as 'center',
+    textAlign: 'center' as 'center', // явное указание типа для textAlign
     backdropFilter: 'blur(10px)',
     border: '1px solid rgba(255, 255, 255, 0.1)'
   },
@@ -116,48 +116,48 @@ interface PetCardProps {
   onPetUpdate: (id: string, updates: Partial<Pet>) => void;
 }
 
-const calculateMoodFromEnergy = (energy: number): Pet['mood'] => {
-  if (energy <= 20) return 'sad';
-  if (energy <= 40) return 'sleepy';
-  if (energy >= 80) return 'excited';
-  if (energy >= 60) return 'happy';
-  return 'content';
+const calculateMoodFromEnergy = (energy: number): PetMood => {
+  if (energy <= 20) return PetMood.SAD;
+  if (energy <= 40) return PetMood.SLEEPY;
+  if (energy >= 80) return PetMood.EXCITED;
+  if (energy >= 60) return PetMood.HAPPY;
+  return PetMood.CONTENT;
 };
 
 const petReducer = (state: Pet, action: PetAction): Pet => {
   switch (action.type) {
-    case 'FEED': {
+    case PetActionType.FEED: {
       const newEnergy = Math.min(100, state.energy + 20);
       const newMood = calculateMoodFromEnergy(newEnergy);
       return { ...state, energy: newEnergy, mood: newMood };
     }
-    case 'LEVEL_UP': {
+    case PetActionType.LEVEL_UP: {
       const newEnergy = Math.max(0, state.energy - 10);
       const newMood = calculateMoodFromEnergy(newEnergy);
       return { ...state, level: state.level + 1, energy: newEnergy, mood: newMood };
     }
-    case 'CHEER': {
+    case PetActionType.CHEER: {
       const newEnergy = Math.max(0, state.energy - 5);
-      let newMood: Pet['mood'];
+      let newMood: PetMood;
       switch (state.mood) {
-        case 'sad': newMood = 'happy'; break;
-        case 'sleepy': newMood = 'content'; break;
-        case 'content': newMood = 'happy'; break;
-        case 'happy': newMood = 'excited'; break;
-        case 'excited': newMood = 'excited'; break;
-        default: newMood = 'content';
+        case PetMood.SAD: newMood = PetMood.HAPPY; break;
+        case PetMood.SLEEPY: newMood = PetMood.CONTENT; break;
+        case PetMood.CONTENT: newMood = PetMood.HAPPY; break;
+        case PetMood.HAPPY: newMood = PetMood.EXCITED; break;
+        case PetMood.EXCITED: newMood = PetMood.EXCITED; break;
+        default: newMood = PetMood.CONTENT;
       }
       return { ...state, energy: newEnergy, mood: newMood };
     }
-    case 'RESET':
-      return { ...state, energy: 50, level: 1, mood: 'content' };
-    case 'UPDATE_ENERGY': {
+    case PetActionType.RESET:
+      return { ...state, energy: 50, level: 1, mood: PetMood.CONTENT };
+    case PetActionType.UPDATE_ENERGY: {
       const newMood = calculateMoodFromEnergy(action.payload);
       return { ...state, energy: action.payload, mood: newMood };
     }
-    case 'UPDATE_MOOD':
+    case PetActionType.UPDATE_MOOD:
       return { ...state, mood: action.payload };
-    case 'SYNC_WITH_PARENT':
+    case PetActionType.SYNC_WITH_PARENT:
       return { ...state, ...action.payload };
     default:
       return state;
@@ -172,19 +172,19 @@ const PetCard: React.FC<PetCardProps> = React.memo(({ pet, onPetUpdate }) => {
   console.log('Rendering PetCard:', state.name, 'Energy:', state.energy, 'Mood:', state.mood);
 
   useEffect(() => {
-    dispatch({ type: 'SYNC_WITH_PARENT', payload: pet });
+    dispatch({ type: PetActionType.SYNC_WITH_PARENT, payload: pet });
   }, [pet.id, pet.energy, pet.level, pet.mood]);
 
   usePetLifecycle({
     pet: state,
     onEnergyChange: (id, energy) => {
       console.log(`Energy change for ${state.name}: ${state.energy} -> ${energy}`);
-      dispatch({ type: 'UPDATE_ENERGY', payload: energy });
+      dispatch({ type: PetActionType.UPDATE_ENERGY, payload: energy });
       addEvent(`${state.name} energy decreased to ${energy}%`);
     },
     onMoodChange: (id, mood) => {
       console.log(`Mood change for ${state.name}: ${state.mood} -> ${mood}`);
-      dispatch({ type: 'UPDATE_MOOD', payload: mood });
+      dispatch({ type: PetActionType.UPDATE_MOOD, payload: mood });
       addEvent(`${state.name} mood changed to ${mood}`);
     }
   });
@@ -214,20 +214,20 @@ const PetCard: React.FC<PetCardProps> = React.memo(({ pet, onPetUpdate }) => {
     addEvent(`${state.name} ${actionName.toLowerCase()}`);
   }, [state.name, addEvent]);
 
-  const feed = useCallback(() => handleAction({ type: 'FEED' }, 'was fed'), [handleAction]);
-  const levelUp = useCallback(() => handleAction({ type: 'LEVEL_UP' }, 'leveled up!'), [handleAction]);
-  const cheer = useCallback(() => handleAction({ type: 'CHEER' }, 'was cheered up'), [handleAction]);
-  const reset = useCallback(() => handleAction({ type: 'RESET' }, 'was reset to default'), [handleAction]);
+  const feed = useCallback(() => handleAction({ type: PetActionType.FEED }, 'was fed'), [handleAction]);
+  const levelUp = useCallback(() => handleAction({ type: PetActionType.LEVEL_UP }, 'leveled up!'), [handleAction]);
+  const cheer = useCallback(() => handleAction({ type: PetActionType.CHEER }, 'was cheered up'), [handleAction]);
+  const reset = useCallback(() => handleAction({ type: PetActionType.RESET }, 'was reset to default'), [handleAction]);
 
-  const getMoodColor = (mood: string): string => {
-    const colors = {
-      happy: '#4caf50',
-      content: '#2196f3',
-      sad: '#f44336',
-      sleepy: '#ff9800',
-      excited: '#e91e63'
-    };
-    return colors[mood as keyof typeof colors] || '#2196f3';
+  const getMoodColor = (mood: PetMood): string => {
+    switch (mood) {
+      case PetMood.HAPPY: return '#4caf50';
+      case PetMood.CONTENT: return '#2196f3';
+      case PetMood.SAD: return '#f44336';
+      case PetMood.SLEEPY: return '#ff9800';
+      case PetMood.EXCITED: return '#e91e63';
+      default: return '#2196f3';
+    }
   };
 
   const getEnergyColor = (energy: number): string => {
@@ -244,6 +244,15 @@ const PetCard: React.FC<PetCardProps> = React.memo(({ pet, onPetUpdate }) => {
     ...styles.petCard,
     boxShadow: `0 8px 32px ${getMoodColor(state.mood)}40`
   };
+
+  const actionButtons = useMemo(() => {
+    return [
+      { label: 'Feed', onClick: feed, disabled: isDisabled },
+      { label: 'Level Up', onClick: levelUp, disabled: isDisabled },
+      { label: 'Cheer Up', onClick: cheer, disabled: isDisabled },
+      { label: 'Reset', onClick: reset, disabled: false }
+    ];
+  }, [feed, levelUp, cheer, reset, isDisabled]);
 
   return (
     <div style={cardStyle}>
@@ -289,33 +298,16 @@ const PetCard: React.FC<PetCardProps> = React.memo(({ pet, onPetUpdate }) => {
       </div>
 
       <div style={styles.actions}>
-        <ActionButton 
-          onClick={feed} 
-          disabled={isDisabled}
-          size="small"
-        >
-          Feed
-        </ActionButton>
-        <ActionButton 
-          onClick={levelUp} 
-          disabled={isDisabled}
-          size="small"
-        >
-          Level Up
-        </ActionButton>
-        <ActionButton 
-          onClick={cheer} 
-          disabled={isDisabled}
-          size="small"
-        >
-          Cheer Up
-        </ActionButton>
-        <ActionButton 
-          onClick={reset}
-          size="small"
-        >
-          Reset
-        </ActionButton>
+        {actionButtons.map((btn, index) => (
+          <ActionButton
+            key={index}
+            onClick={btn.onClick}
+            disabled={btn.disabled}
+            size="small"
+          >
+            {btn.label}
+          </ActionButton>
+        ))}
       </div>
 
       {isDisabled && (

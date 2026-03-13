@@ -13,17 +13,17 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { useEventLog } from '../../hooks/useEventLog';
 
 interface EventLogProps {
-  open: boolean;
+  isOpen: boolean;
   onClose: () => void;
 }
 
-export const EventLog: React.FC<EventLogProps> = ({ open, onClose }) => {
+export const EventLog: React.FC<EventLogProps> = ({ isOpen, onClose }) => {
   const { events, clearEvents } = useEventLog();
 
   return (
     <Drawer
       anchor="right"
-      open={open}
+      open={isOpen}
       onClose={onClose}
       sx={{
         '& .MuiDrawer-paper': {
@@ -97,7 +97,8 @@ export const EventLog: React.FC<EventLogProps> = ({ open, onClose }) => {
             backdropFilter: 'blur(5px)'
           }}
         >
-          {events.map((event, index) => (
+          {/* Безопасная итерация с optional chaining */}
+          {events?.map((event, index) => (
             <ListItem 
               key={index}
               sx={{
@@ -127,7 +128,7 @@ export const EventLog: React.FC<EventLogProps> = ({ open, onClose }) => {
               />
             </ListItem>
           ))}
-          {events.length === 0 && (
+          {(!events || events.length === 0) && (
             <ListItem>
               <ListItemText
                 primary={
